@@ -2,35 +2,23 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
+    height: 100%;
+    margin: 0;
     font-family: Arial, sans-serif;
     background: #f2f2f2;
-    margin: 0;
-    height: 100vh;
 }
 
-/* Contenedor principal */
+/* ===== CONTENEDOR PRINCIPAL ===== */
 .chat-container {
-    background: white;
     width: 100%;
-    max-width: 450px;
-    height: 100vh;
+    height: 100svh; /* mejor que 100vh en móviles */
     display: flex;
     flex-direction: column;
-    margin: auto;
-    border-radius: 0;
+    background: white;
 }
 
-/* En pantallas grandes */
-@media (min-width: 600px) {
-    .chat-container {
-        height: 550px;
-        border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        margin-top: 40px;
-    }
-}
-
+/* ===== HEADER ===== */
 .chat-header {
     background: #4CAF50;
     color: white;
@@ -38,9 +26,10 @@ body {
     text-align: center;
     font-weight: bold;
     font-size: 1.1rem;
+    flex-shrink: 0;
 }
 
-/* Mensajes */
+/* ===== MENSAJES ===== */
 .chat-messages {
     flex: 1;
     padding: 10px;
@@ -48,58 +37,71 @@ body {
     background: #fafafa;
 }
 
-/* Cada mensaje */
+/* MENSAJE */
 .message {
     margin-bottom: 10px;
 }
 
 .user {
     font-weight: bold;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    margin-bottom: 2px;
 }
 
 .text {
     background: #e0e0e0;
     padding: 10px;
-    border-radius: 8px;
-    display: inline-block;
-    max-width: 90%;
+    border-radius: 10px;
+    max-width: 85%;
     font-size: 0.95rem;
     word-wrap: break-word;
 }
 
-/* Input inferior */
+/* ===== INPUT ===== */
 .chat-input {
     display: flex;
-    padding: 8px;
     gap: 6px;
+    padding: 8px;
     border-top: 1px solid #ddd;
+    background: white;
+    flex-shrink: 0;
 }
 
 .chat-input input {
     flex: 1;
-    padding: 10px;
+    padding: 12px;
     font-size: 1rem;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid #ccc;
 }
 
-/* Botón */
+/* BOTÓN GRANDE (dedos) */
 .chat-input button {
-    padding: 10px 14px;
+    padding: 12px 16px;
     font-size: 1rem;
     border: none;
     background: #4CAF50;
     color: white;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
 .chat-input button:active {
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 
-/* Evitar zoom raro en móviles */
-input, button {
-    touch-action: manipulation;
+/* ===== DESKTOP ===== */
+@media (min-width: 600px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chat-container {
+        max-width: 450px;
+        height: 600px;
+        border-radius: 12px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.15);
+    }
 }
