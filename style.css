@@ -58,41 +58,46 @@ html, body {
     word-wrap: break-word;
 }
 
-/* INPUT */
+/* =====================
+   INPUT (MÓVIL)
+===================== */
 .chat-input {
     display: flex;
+    flex-direction: column; /* 👈 apilado en celular */
     gap: 6px;
-    padding: 8px;
+    padding: 10px;
     border-top: 1px solid #ddd;
     background: white;
 }
 
 .chat-input input {
-    flex: 1;
+    width: 100%;
     padding: 12px;
     font-size: 1rem;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #ccc;
 }
 
+/* BOTÓN GRANDE */
 .chat-input button {
-    padding: 12px 18px;
-    font-size: 1rem;
+    width: 100%;
+    padding: 14px;
+    font-size: 1.05rem;
     border: none;
     background: #4CAF50;
     color: white;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
 .chat-input button:active {
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 
 /* =====================
-   TABLET
+   TABLET / DESKTOP
 ===================== */
-@media (min-width: 600px) {
+@media (min-width: 768px) {
     .chat-container {
         max-width: 600px;
         height: 80vh;
@@ -100,29 +105,34 @@ html, body {
         border-radius: 12px;
         box-shadow: 0 0 12px rgba(0,0,0,0.15);
     }
-}
 
-/* =====================
-   DESKTOP
-===================== */
-@media (min-width: 1024px) {
-    body {
-        display: flex;
-        justify-content: center;
+    .chat-input {
+        flex-direction: row; /* 👈 en fila */
         align-items: center;
     }
 
+    /* Nombre más chico */
+    #username {
+        max-width: 150px;
+    }
+
+    /* Mensaje ocupa más espacio */
+    #message {
+        flex: 1;
+    }
+
+    .chat-input button {
+        width: auto;
+        padding: 12px 20px;
+    }
+}
+
+/* =====================
+   DESKTOP GRANDE
+===================== */
+@media (min-width: 1200px) {
     .chat-container {
         max-width: 500px;
         height: 600px;
-    }
-
-    .chat-header {
-        font-size: 1.2rem;
-    }
-
-    .text {
-        font-size: 1rem;
-        max-width: 75%;
     }
 }
